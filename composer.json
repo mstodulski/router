@@ -1,0 +1,31 @@
+{
+	"name": "mstodulski/router",
+	"license": "MIT",
+	"description": "",
+	"require": {
+		"php": ">=8.0",
+		"phpunit/phpunit": "9.5.*",
+		"symfony/var-dumper": "5.3.*"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git@github.com:mstodulski/cache.git"
+		}
+	],
+	"keywords": ["library", "router", "routing", "http"],
+	"homepage": "https://devsprint.pl",
+	"authors": [
+		{
+			"name": "Marcin Stodulski",
+			"homepage": "https://devsprint.pl",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"mstodulski\\router\\": "src",
+			"test\\router\\helpers\\": "tests/helpers"
+		}
+	}
+}
