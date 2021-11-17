@@ -30,7 +30,7 @@ class Router
         for ($i = count($definedLinkArray) - 1; $i >=0; $i--) {
             if (str_starts_with($definedLinkArray[$i], ':')) {
                 $parameterName = ltrim($definedLinkArray[$i], ':');
-                if (isset($route['options']['defaults'][$parameterName])) {
+                if (isset($route['options']['defaults']) && array_key_exists($parameterName, $route['options']['defaults'])) {
                     if ($index != $i) {
                         break;
                     } else {
@@ -75,7 +75,7 @@ class Router
                     }
                 } else {
                     $parameterName = ltrim($definedUrlComponent, ':');
-                    if (isset($routeParameters['options']['defaults'][$parameterName])) {
+                    if (isset($routeParameters['options']['defaults']) && array_key_exists($parameterName, $routeParameters['options']['defaults'])) {
                         $parameters[$parameterName] = $routeParameters['options']['defaults'][$parameterName];
                     } else {
                         $parametersMatch = false;
@@ -123,7 +123,7 @@ class Router
             }
         }
 
-        throw new RouteException('Searched route was not found: ' . $currentUrl);
+        throw new RouteException('Searched link was not found: ' . $currentUrl);
     }
 
     /** @throws RouteException */
@@ -174,7 +174,7 @@ class Router
 
                         $definedLinkArray[$index] = $parameters[$parameterName];
                     } else {
-                        if (isset($route['options']['defaults'][$parameterName])) {
+                        if (isset($route['options']['defaults']) && array_key_exists($parameterName, $route['options']['defaults'])) {
                             $definedLinkArray[$index] = $route['options']['defaults'][$parameterName];
                         } else {
                             throw new RouteException('Parameter :' . $parameterName . ' is not defined and default value is not configured.');
@@ -183,7 +183,7 @@ class Router
                 }
             }
 
-            return '/' . implode('/', $definedLinkArray);
+            return '/' . trim(implode('/', $definedLinkArray), '/');
         } else {
             throw new RouteException('Searched route was not found: ' . $schema);
         }
