@@ -7,12 +7,6 @@
 		"phpunit/phpunit": "9.5.*",
 		"symfony/var-dumper": "5.3.*"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git@github.com:mstodulski/cache.git"
-		}
-	],
 	"keywords": ["library", "router", "routing", "http"],
 	"homepage": "https://devsprint.pl",
 	"authors": [

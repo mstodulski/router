@@ -149,7 +149,7 @@ class Router
                         isset($route['options']['defaults'][$parameterName]) &&
                         (
                             !isset($parameters[$parameterName]) ||
-                            (isset($parameters[$parameterName]) && ($parameters[$parameterName] == $route['options']['defaults'][$parameterName]))
+                            ($parameters[$parameterName] == $route['options']['defaults'][$parameterName])
                         )
                     ) {
                         if ($index != $i) {
